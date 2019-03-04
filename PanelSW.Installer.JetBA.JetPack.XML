@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PanelSW.Installer.JetBA.JetPack</name>
+    </assembly>
+    <members>
+        <member name="T:PanelSW.Installer.JetBA.JetPack.Localization.Resources">
+            <summary>
+            Localization strings
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Localization.Resources.FailedZippingLogFiles">
+            <summary>
+            Failed zipping log files to '{0}': {1}
+            </summary>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.JetPack.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Properties.Resources.FailedZippingLogFiles">
+            <summary>
+              Looks up a localized string similar to Failed zipping log files to &apos;{0}&apos;: {1}.
+            </summary>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.JetPack.Util.BundleInfo">
+            <summary>
+            <see cref="T:PanelSW.Installer.JetBA.JetPack.Util.BundleSearch"/> result details
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.Util.BundleInfo.#ctor">
+            <summary>
+            C'tor
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.BundleInfo.Name">
+            <summary>
+            Bundle display name
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.BundleInfo.UpgradeCode">
+            <summary>
+            Bundle UpgradeCode
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.BundleInfo.ProductCode">
+            <summary>
+            Bundle ProductCode
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.BundleInfo.Version">
+            <summary>
+            Bundle version
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.BundleInfo.IsMachineContext">
+            <summary>
+            User / Machine context
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.BundleInfo.CachePath">
+            <summary>
+            Bundle cache path
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.BundleInfo.PersistedVariables">
+            <summary>
+            Bundle persisted variables as loaded from cache folder
+            </summary>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.JetPack.Util.BundleSearch">
+            <summary>
+            Utility class to enumerate bundles by UpgradeCode
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.Util.BundleSearch.#ctor(PanelSW.Installer.JetBA.JetBootstrapperApplication)">
+            <summary>
+            c'tor
+            </summary>
+            <param name="ba"></param>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.Util.BundleSearch.Enumerate(System.Guid)">
+            <summary>
+            Enumerate bundles with BundleUpgradeCode
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.Util.BundleSearch.Enumerate(System.Guid,System.Boolean)">
+            <summary>
+            Enumerate bundles with BundleUpgradeCode
+            </summary>
+            <param name="upgradeCode"></param>
+            <param name="machine"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.Util.BundleSearch.LoadByBundleId(System.String,System.Boolean)">
+            <summary>
+            Load bundle information from registry by bundle Id.
+            </summary>
+            <param name="id"></param>
+            <param name="machine"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.JetPack.Util.SqlServer">
+            <summary>
+            SQL Server information as enumerated with <see cref="M:System.Data.Sql.SqlDataSourceEnumerator.GetDataSources"/>.
+            This class should be bound in Ninject.
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.SqlServer.ServerName">
+            <summary>
+            Server name or address
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.SqlServer.InstanceName">
+            <summary>
+            SQL Instance name
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.SqlServer.Version">
+            <summary>
+            SQL Server Version
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.Util.SqlServer.#ctor(System.Data.DataRow)">
+            <summary>
+            C'tor
+            </summary>
+            <param name="row">DataRow returned from <see cref="M:System.Data.Sql.SqlDataSourceEnumerator.GetDataSources"/> call</param>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.SqlServer.ServerInstance">
+            <summary>
+            ServerName\InstanceName
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.Util.SqlServer.ServerInstanceVersion">
+            <summary>
+            ServerName\InstanceName v{Version}
+            </summary>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.JetPack.ViewModel.FinishViewModelEx">
+            <summary>
+            Extended FinishViewModel that can zip all log files.
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.FinishViewModelEx.#ctor(PanelSW.Installer.JetBA.JetBootstrapperApplication)">
+            <summary>
+            C'tor
+            </summary>
+            <param name="ba"></param>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.FinishViewModelEx.GetLogFiles">
+            <summary>
+            List all log files paths.
+            Default implementation returns list of execution and rollback log file paths.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.FinishViewModelEx.ZipLogFilesCommand">
+            <summary>
+            Zip all log files. Command parameter is target Zip file path.
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.FinishViewModelEx.ZipLogFiles(System.String)">
+            <summary>
+            Archive log files.
+            </summary>
+            <param name="zipFilePath">Target zip file path</param>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.FinishViewModelEx.ZipFiles(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Zip 
+            </summary>
+            <param name="files">List of files to archive</param>
+            <param name="zipFilePath">Target zip file path</param>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.JetPack.ViewModel.PackagesViewModel">
+            <summary>
+            Access bundle packages, detection and plan states
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.PackagesViewModel.#ctor(PanelSW.Installer.JetBA.JetBootstrapperApplication)">
+            <summary>
+            C'tor
+            </summary>
+            <param name="ba"></param>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.PackagesViewModel.Packages">
+            <summary>
+            Bundle packages
+            </summary>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.#ctor(PanelSW.Installer.JetBA.JetBootstrapperApplication,System.Lazy{System.Data.IDbConnection})">
+            <summary>
+            C'tor
+            </summary>
+            <param name="ba"></param>
+            <param name="dbConnection">Disposible connection, usually bound the a method to get up to date connection parameters.</param>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.SqlServers">
+            <summary>
+            Collection of SQL servers
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.ServerEnumerationStatus">
+            <summary>
+            SQL server enumeration task status.
+            If a enumeration has not been triggered, WaitingForActivation
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.ConnectionTestState">
+            <summary>
+            Status of the task that performs connection test
+            If a test has not been triggered, WaitingForActivation
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.ResetTestStatus">
+            <summary>
+            Reset <see cref="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.ConnectionTestState"/> to <see cref="F:System.Threading.Tasks.TaskStatus.WaitingForActivation"/>.
+            This is useful to rest test result indication when the user changes any of the connection parameters.
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.EnumerateServersCommand">
+            <summary>
+            Trigger SQL Server enumeration
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.TestConnectionCommand">
+            <summary>
+            Trigger a connection test. Expecting Ninject to have a binding to a disposable <see cref="T:System.Data.Common.DbConnection"/> object.
+            </summary>
+        </member>
+    </members>
+</doc>
