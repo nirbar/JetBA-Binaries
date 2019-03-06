@@ -1151,6 +1151,8 @@
             <summary>
             "Next" navigation task status.
             For time consuming validation tasks, this can be bound to present a progress indication.
+            Status is <see cref="F:System.Threading.Tasks.TaskStatus.Running"/> during page validation.
+            Status is <see cref="F:System.Threading.Tasks.TaskStatus.WaitingForChildrenToComplete"/> during prompts related to page validation.
             </summary>
         </member>
         <member name="M:PanelSW.Installer.JetBA.ViewModel.NavigationViewModel.ValidatePage">
