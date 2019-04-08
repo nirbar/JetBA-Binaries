@@ -219,12 +219,11 @@
             
             </summary>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.#ctor(PanelSW.Installer.JetBA.JetBootstrapperApplication,System.Lazy{System.Data.IDbConnection})">
+        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.#ctor(PanelSW.Installer.JetBA.JetBootstrapperApplication)">
             <summary>
             C'tor
             </summary>
             <param name="ba"></param>
-            <param name="dbConnection">Disposible connection, usually bound the a method to get up to date connection parameters.</param>
         </member>
         <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.SqlServers">
             <summary>
@@ -237,26 +236,9 @@
             If a enumeration has not been triggered, WaitingForActivation
             </summary>
         </member>
-        <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.ConnectionTestState">
-            <summary>
-            Status of the task that performs connection test
-            If a test has not been triggered, WaitingForActivation
-            </summary>
-        </member>
-        <member name="M:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.ResetTestStatus">
-            <summary>
-            Reset <see cref="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.ConnectionTestState"/> to <see cref="F:System.Threading.Tasks.TaskStatus.WaitingForActivation"/>.
-            This is useful to rest test result indication when the user changes any of the connection parameters.
-            </summary>
-        </member>
         <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.EnumerateServersCommand">
             <summary>
             Trigger SQL Server enumeration
-            </summary>
-        </member>
-        <member name="P:PanelSW.Installer.JetBA.JetPack.ViewModel.SqlViewModel.TestConnectionCommand">
-            <summary>
-            Trigger a connection test. Expecting Ninject to have a binding to a disposable <see cref="T:System.Data.Common.DbConnection"/> object.
             </summary>
         </member>
     </members>

@@ -33,6 +33,11 @@
             JetBA encrypted variables
             </summary>
         </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData.BundleSearches">
+            <summary>
+            BundleSearch rows
+            </summary>
+        </member>
         <member name="P:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData.BundleAttributes">
             <summary>
             General attributes of this Bundle
@@ -117,6 +122,31 @@
         <member name="P:PanelSW.Installer.JetBA.Manifest.JetBaSettings.LicenseXml">
             <summary>
             JetBA License text
+            </summary>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.Manifest.JetBundleSearch">
+            <summary>
+            BundleSearch row
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.JetBundleSearch.UpgradeCode">
+            <summary>
+            Bundle UpgradeCode to search for
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.JetBundleSearch.VersionVariable">
+            <summary>
+            Name of a variable to receive the bundle version. If no matching bundle is detected, variable value will be 0.0.0.0
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.JetBundleSearch.NamePattern">
+            <summary>
+            Optional regex pattern to filter bundles sharing the same UpgradeCode
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.Manifest.JetBundleSearch.#ctor">
+            <summary>
+            C'tor
             </summary>
         </member>
         <member name="T:PanelSW.Installer.JetBA.Manifest.WixPackageFeatureInfo">
@@ -1296,7 +1326,7 @@
             </summary>
             <example>
             <!-- XAML Binding -->
-            <![CDATA[<TextBox Text={Binding VariablesViewModel.InstallFolder.String} />]]>
+            <![CDATA[<TextBox Text="{Binding VariablesViewModel.InstallFolder.String}" />]]>
             </example>
         </member>
         <member name="M:PanelSW.Installer.JetBA.ViewModel.VariablesViewModel.#ctor(PanelSW.Installer.JetBA.JetBootstrapperApplication)">
@@ -1304,6 +1334,30 @@
             C'tor- called by NInject
             </summary>
             <param name="ba"></param>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.ViewModel.VariablesViewModel.EncryptOne(System.String)">
+            <summary>
+            Encrypt a single value.
+            Default implementation uses <see cref="M:System.Security.Cryptography.ProtectedData.Protect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)"/>.
+            </summary>
+            <param name="plain"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.ViewModel.VariablesViewModel.DecryptOne(System.String)">
+            <summary>
+            Decrypt a single value.
+            Default implementation uses <see cref="M:System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)"/>.
+            </summary>
+            <param name="secret"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.ViewModel.VariablesViewModel.DecryptAll(System.String)">
+            <summary>
+            Decrypt variable in that were encrypted using bundle variable @jet:Encrypted attribute.
+            Useful to decrypt variables of a previous version persisted 'JetBA_Encrypted_Variables' variable.
+            </summary>
+            <param name="jetEncryptedVariables"></param>
+            <returns></returns>
         </member>
         <member name="P:PanelSW.Installer.JetBA.ViewModel.VariablesViewModel.BA">
             <summary>

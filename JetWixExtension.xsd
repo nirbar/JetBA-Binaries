@@ -38,6 +38,39 @@
     </xs:annotation>
   </xs:attribute>
 
+  <xs:element name="BundleSearch">
+    <xs:annotation>
+      <xs:appinfo>
+        <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="Bundle" />
+        <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="Fragment" />
+      </xs:appinfo>
+    </xs:annotation>
+
+    <xs:complexType>
+      <xs:attribute name="UpgradeCode" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            <![CDATA[Bundle UpgradeCode]]>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="VersionVariable" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            <![CDATA[Name of a variable to receive the version of the bundle. If a matching bundle is detected its version will be written to the variable. Otherwise, the variable's value will be 0.0.0.0]]>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NamePattern" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+            <![CDATA[Optional regex pattern to filter bundles sharing the same UpgradeCode]]>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
   <xs:element name="JetLicense">
     <xs:annotation>
       <xs:appinfo>
