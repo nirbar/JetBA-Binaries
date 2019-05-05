@@ -385,7 +385,8 @@
             <item><see cref="T:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.BootstrapperApplication"/>, <see cref="T:PanelSW.Installer.JetBA.JetBootstrapperApplication"/> to constructor input as constant.</item>
             <item><see cref="T:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Engine"/></item>
             <item><see cref="T:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Command"/></item>
-            <item><see cref="T:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Display"/></item>
+            <item><see cref="T:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Display"/><description>Constatnt bound to BootstrapperApplication.Command.Display</description></item>
+            <item><see cref="T:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Restart"/><description>Constatnt bound to BootstrapperApplication.Command.Restart</description></item>
             <item><see cref="T:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData"/></item>
             <item><see cref="T:PanelSW.Installer.JetBA.Localization.Resources"/>.</item>
             <item><see cref="T:PanelSW.Installer.JetBA.ViewModel.ApplyViewModel"/>.</item>
