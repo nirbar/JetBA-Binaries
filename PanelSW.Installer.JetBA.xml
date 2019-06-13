@@ -1295,6 +1295,13 @@
             <param name="doExit">True to abort after the first prompt</param>
             <returns>true if no errors were detected. That is, if no exceptions were collected, or if only <see cref="T:PanelSW.Installer.JetBA.Util.InputValidationException"/> instances with warning or info level were.</returns>
         </member>
+        <member name="P:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.IgnoreErrors">
+            <summary>
+            True to ignore validation errors.
+            Errors will be logged and prompted, but will not fail the installation or block navigation to next page.
+            Used mainly for debug purposes.
+            </summary>
+        </member>
         <member name="M:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.PromptResults(System.Windows.Input.ICommand,System.Windows.Input.ICommand)">
             <summary>
             Prompt validation results and clears them.
