@@ -38,6 +38,20 @@
     </xs:annotation>
   </xs:attribute>
 
+  <xs:attribute name="RebootBoundary" type="wix:YesNoType">
+    <xs:annotation>
+      <xs:appinfo>
+        <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="ExePackage" />
+        <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="MsiPackage" />
+        <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="MspPackage" />
+        <xse:parent namespace="http://schemas.microsoft.com/wix/2006/wi" ref="MsuPackage" />
+      </xs:appinfo>
+      <xs:documentation>
+        <![CDATA[Yes to force reboot after the package if any preceding package required reboot]]>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:attribute>
+
   <xs:element name="BundleSearch">
     <xs:annotation>
       <xs:appinfo>

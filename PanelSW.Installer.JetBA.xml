@@ -33,6 +33,11 @@
             JetBA encrypted variables
             </summary>
         </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData.RebootBoundaries">
+            <summary>
+            Force reboot on boundaries in which any package required it.
+            </summary>
+        </member>
         <member name="P:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData.BundleSearches">
             <summary>
             BundleSearch rows
@@ -102,6 +107,16 @@
         <member name="P:PanelSW.Installer.JetBA.Manifest.BundleAttributes.PerMachine">
             <summary>
             Whether or not this bundle is in machine context. 'yes' or 'no'
+            </summary>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.Manifest.JetBaRebootBoundary">
+            <summary>
+            Force reboot on boundaries in which any package required it.
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.JetBaRebootBoundary.PackageId">
+            <summary>
+            Package Id
             </summary>
         </member>
         <member name="T:PanelSW.Installer.JetBA.Manifest.JetBaEncryptVariable">
@@ -239,6 +254,11 @@
             Whether or not this package is vital. 'yes' or 'no'
             </summary>
         </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.IsVital">
+            <summary>
+            <see cref="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.Vital"/> converted to boolean value.
+            </summary>
+        </member>
         <member name="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.DownloadSize">
             <summary>
             Download size of the package
@@ -264,6 +284,11 @@
             Whether or not this package is permannet. 'yes' or 'no'
             </summary>
         </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.IsPermanent">
+            <summary>
+            <see cref="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.Permanent"/> converted to boolean value.
+            </summary>
+        </member>
         <member name="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.LogPathVariable">
             <summary>
             Package log path variable
@@ -282,6 +307,11 @@
         <member name="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.DisplayInternalUI">
             <summary>
             Whether or not internal UI for this package will be displayed
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.IsDisplayInternalUI">
+            <summary>
+            <see cref="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.DisplayInternalUI"/> converted to boolean value.
             </summary>
         </member>
         <member name="P:PanelSW.Installer.JetBA.Manifest.WixPackageProperties.DetectState">
