@@ -112,12 +112,12 @@
             <param name="machine"></param>
             <returns></returns>
         </member>
-        <member name="T:PanelSW.Installer.JetBA.JetPack.Util.EngineVariableEx">
+        <member name="T:PanelSW.Installer.JetBA.JetPack.Util.EngineVariableExtMethods">
             <summary>
             Extension methods for <see cref="T:PanelSW.Installer.JetBA.Util.EngineVariable"/>.
             </summary>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.JetPack.Util.EngineVariableEx.BindPasswordBox(PanelSW.Installer.JetBA.Util.EngineVariable,System.Windows.Controls.PasswordBox,System.Windows.Threading.Dispatcher)">
+        <member name="M:PanelSW.Installer.JetBA.JetPack.Util.EngineVariableExtMethods.BindPasswordBox(PanelSW.Installer.JetBA.Util.EngineVariable,System.Windows.Controls.PasswordBox,System.Windows.Threading.Dispatcher)">
             <summary>
             Pseudo-bind a variable to a <see cref="P:System.Windows.Controls.PasswordBox.Password"/>.
             </summary>

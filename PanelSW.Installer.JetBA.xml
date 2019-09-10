@@ -7,6 +7,9 @@
         <member name="T:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData">
             <summary>
             WiX bootstrapper manifest
+            <para>
+            Must have a <see cref="T:System.Xml.Serialization.XmlRootAttribute"/> with <see cref="P:System.Xml.Serialization.XmlRootAttribute.ElementName"/> equals "BootstrapperApplicationData" and <see cref="P:System.Xml.Serialization.XmlRootAttribute.Namespace"/> equals "http://schemas.microsoft.com/wix/2010/BootstrapperApplicationData".
+            </para>
             </summary>
         </member>
         <member name="M:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData.ParseBootstrapperApplicationData``1">
@@ -433,6 +436,14 @@
             </para>
             </summary>
         </member>
+        <member name="M:PanelSW.Installer.JetBA.NInjectBinder.BindManifest``1">
+            <summary>
+            Helper method to bind a customized BootstrapperApplicationData.
+            The binding should be to method <see cref="M:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData.ParseBootstrapperApplicationData``1"/>. 
+            Using this helper method simplifies inheritors code.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
         <member name="T:PanelSW.Installer.JetBA.Properties.Resources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -695,6 +706,18 @@
             Test if the variable exists.
             </summary>
         </member>
+        <member name="P:PanelSW.Installer.JetBA.Util.EngineVariable.IsNullOrEmpty">
+            <summary>
+            Test if the variable doesn't exist or has an empty value.
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Util.EngineVariable.IsReadOnly">
+            <summary>
+            Get or set whether this variable is read only. Defaults to false.
+            Read only variables throw on attempt to set a value to.
+            You can override read-only protection by setting values directly to one of <see cref="P:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Engine.StringVariables"/>, <see cref="P:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Engine.NumericVariables"/>, <see cref="P:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Engine.SecureStringVariables"/>, or <see cref="P:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Engine.VersionVariables"/>.
+            </summary>
+        </member>
         <member name="P:PanelSW.Installer.JetBA.Util.EngineVariable.IsOnCommandLine">
             <summary>
             Get or set whether this variable was set from command line.
@@ -715,9 +738,24 @@
             Get or set the variable's Version value
             </summary>
         </member>
+        <member name="P:PanelSW.Installer.JetBA.Util.EngineVariable.BooleanString">
+            <summary>
+            Treats the variable's string value as <see cref="F:System.Boolean.TrueString"/> or <see cref="F:System.Boolean.FalseString"/>
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Util.EngineVariable.InverseBooleanString">
+            <summary>
+            Negates <see cref="P:PanelSW.Installer.JetBA.Util.EngineVariable.BooleanString"/>
+            </summary>
+        </member>
         <member name="P:PanelSW.Installer.JetBA.Util.EngineVariable.Boolean">
             <summary>
             Treats the variable's numeric value as 1 or 0
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Util.EngineVariable.InverseBoolean">
+            <summary>
+            Negates <see cref="P:PanelSW.Installer.JetBA.Util.EngineVariable.Boolean"/>
             </summary>
         </member>
         <member name="P:PanelSW.Installer.JetBA.Util.EngineVariable.SecureString">
