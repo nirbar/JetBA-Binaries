@@ -1494,7 +1494,7 @@
         </member>
         <member name="T:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons">
             <summary>
-            Clicked button, returned by <see cref="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.ShowSync(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.String,System.String)"/>
+            Clicked button, returned by <see cref="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.ShowSync(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons)"/>
             </summary>
         </member>
         <member name="F:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons.None">
@@ -1663,7 +1663,7 @@
             </summary>
             <param name="ba"></param>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Show(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand)">
+        <member name="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Show(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons)">
             <summary>
             Asynchronic popup message.
             </summary>
@@ -1675,9 +1675,10 @@
             <param name="middleCommand">Value for bindable <see cref="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.MiddleCommand"/> property</param>
             <param name="leftCommandText">Value for bindable <see cref="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.LeftCommandText"/> property</param>
             <param name="leftCommand">Value for bindable <see cref="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.LeftCommand"/> property</param>
+            <param name="defaultButton">Default button. If not specified, <see cref="F:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons.Right"/></param>
             <param name="hint">Hint for use with icon binding</param>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.ShowSync(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.String,System.String)">
+        <member name="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.ShowSync(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons)">
             <summary>
             Synchronic popup message
             </summary>
@@ -1687,6 +1688,7 @@
             <param name="middleCommandText">Value for bindable <see cref="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.MiddleCommandText"/> property</param>
             <param name="leftCommandText">Value for bindable <see cref="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.LeftCommandText"/> property</param>
             <param name="hint">Hint for use with icon binding</param>
+            <param name="defaultButton">Default button. If not specified, <see cref="F:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons.Right"/></param>
             <returns>The clicked button</returns>
         </member>
         <member name="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.ShowSync(PanelSW.Installer.JetBA.ViewModel.PopupViewModel.UIHintFlags,System.String,System.String)">
@@ -1725,9 +1727,24 @@
             For Files-in-use message, holds the collection of files in use.
             </summary>
         </member>
+        <member name="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IsRightButtonDefault">
+            <summary>
+            True iff the right button is default
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IsMiddleButtonDefault">
+            <summary>
+            True iff the middle button is default
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IsLeftButtonDefault">
+            <summary>
+            True iff the left button is default
+            </summary>
+        </member>
         <member name="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.RightCommand">
             <summary>
-            In asynchronic <see cref="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Show(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand)"/>, command to execute when the user clicks the right button
+            In asynchronic <see cref="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Show(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons)"/>, command to execute when the user clicks the right button
             </summary>
         </member>
         <member name="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.RightCommandText">
@@ -1742,7 +1759,7 @@
         </member>
         <member name="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.MiddleCommand">
             <summary>
-            In asynchronic <see cref="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Show(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand)"/>, command to execute when the user clicks the middle button
+            In asynchronic <see cref="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Show(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons)"/>, command to execute when the user clicks the middle button
             </summary>
         </member>
         <member name="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.MiddleCommandText">
@@ -1757,7 +1774,7 @@
         </member>
         <member name="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.LeftCommand">
             <summary>
-            In asynchronic <see cref="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Show(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand)"/>, command to execute when the user clicks the left button
+            In asynchronic <see cref="M:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Show(System.String,System.String,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.IconHint,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,System.String,System.Windows.Input.ICommand,PanelSW.Installer.JetBA.ViewModel.PopupViewModel.Buttons)"/>, command to execute when the user clicks the left button
             </summary>
         </member>
         <member name="P:PanelSW.Installer.JetBA.ViewModel.PopupViewModel.LeftCommandText">
