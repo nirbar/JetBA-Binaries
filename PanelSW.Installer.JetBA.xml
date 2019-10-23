@@ -867,20 +867,22 @@
             Represents an input validation failure with optional level and caption
             </summary>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.Util.InputValidationException.#ctor(System.String,System.String,PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel)">
+        <member name="M:PanelSW.Installer.JetBA.Util.InputValidationException.#ctor(System.String,System.String,PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel,System.Boolean)">
             <summary>
             C'tor
             </summary>
-            <param name="message"></param>
-            <param name="caption"></param>
-            <param name="level"></param>
+            <param name="message">Message text</param>
+            <param name="caption">Message caption</param>
+            <param name="level">Message level</param>
+            <param name="promptExitContinue">Prompt the user to exit or continue. By default, only "OK" is available. Ignored if <see cref="P:PanelSW.Installer.JetBA.Util.InputValidationException.Level"/> is <see cref="F:PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel.Error"/></param>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.Util.InputValidationException.#ctor(System.String,PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel)">
+        <member name="M:PanelSW.Installer.JetBA.Util.InputValidationException.#ctor(System.String,PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel,System.Boolean)">
             <summary>
             C'tor
             </summary>
             <param name="message"></param>
             <param name="level"></param>
+            <param name="promptExitContinue">Prompt the user to exit or continue. By default, only "OK" is available. Ignored if <see cref="P:PanelSW.Installer.JetBA.Util.InputValidationException.Level"/> is <see cref="F:PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel.Error"/> and in non-full UI modes</param>
         </member>
         <member name="P:PanelSW.Installer.JetBA.Util.InputValidationException.Level">
             <summary>
@@ -910,6 +912,11 @@
         <member name="F:PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel.Error">
             <summary>
             Validation failure- installation will fail in silent mode; Page will not transit if full UI mode.
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Util.InputValidationException.PromptExitContinue">
+            <summary>
+            Prompt the user to exit or continue. By default, only "OK" is available. Ignored if <see cref="P:PanelSW.Installer.JetBA.Util.InputValidationException.Level"/> is <see cref="F:PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel.Error"/> and in non-full UI modes.
             </summary>
         </member>
         <member name="T:PanelSW.Installer.JetBA.Util.InverseBooleanConverter">
