@@ -828,7 +828,7 @@
         </member>
         <member name="M:PanelSW.Installer.JetBA.Util.EnumBooleanConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
             <summary>
-            
+            Iff value is <see cref="F:System.Boolean.TrueString"/>, return first enum value of the <see cref="P:System.Windows.Data.Binding.ConverterParameter"/>
             </summary>
             <param name="value"></param>
             <param name="targetType"></param>
@@ -854,7 +854,7 @@
         </member>
         <member name="M:PanelSW.Installer.JetBA.Util.EnumToVisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
             <summary>
-            Not implemented
+            Iff value is <see cref="F:System.Windows.Visibility.Visible"/>, return first enum value of the <see cref="P:System.Windows.Data.Binding.ConverterParameter"/>
             </summary>
             <param name="value"></param>
             <param name="targetType"></param>
