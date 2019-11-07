@@ -31,6 +31,11 @@
             JetBA License
             </summary>
         </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData.VariableNames">
+            <summary>
+            Variable names
+            </summary>
+        </member>
         <member name="P:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData.EncryptVariables">
             <summary>
             JetBA encrypted variables
@@ -110,6 +115,16 @@
         <member name="P:PanelSW.Installer.JetBA.Manifest.BundleAttributes.PerMachine">
             <summary>
             Whether or not this bundle is in machine context. 'yes' or 'no'
+            </summary>
+        </member>
+        <member name="T:PanelSW.Installer.JetBA.Manifest.JetVariable">
+            <summary>
+            Variable name
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Manifest.JetVariable.Variable">
+            <summary>
+            Variable name
             </summary>
         </member>
         <member name="T:PanelSW.Installer.JetBA.Manifest.JetBaRebootBoundary">
@@ -2191,21 +2206,21 @@
             Evaluate launch conditions.
             On passive mode- start Plan.
             </summary>
-            <param name="e"></param>
+            <param name="args"></param>
         </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.OnPlanPackageBegin(Microsoft.Tools.WindowsInstallerXml.Bootstrapper.PlanPackageBeginEventArgs)">
             <summary>
             Called when the engine has begun planning the installation of a specific package.
             Skip installing MbaNetfxPackageId package. 
             </summary>
-            <param name="e"></param>
+            <param name="args"></param>
         </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.OnPlanComplete(Microsoft.Tools.WindowsInstallerXml.Bootstrapper.PlanCompleteEventArgs)">
             <summary>
             Called when the engine has completed planning the installation.
             In passive/silent UI, begin apply.
             </summary>
-            <param name="e"></param>
+            <param name="args"></param>
         </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.OnApplyBegin(Microsoft.Tools.WindowsInstallerXml.Bootstrapper.ApplyBeginEventArgs)">
             <summary>
@@ -2224,10 +2239,10 @@
             <summary>
             Called when the engine has completed installing a specific package.
             Initiate reboot if package exit code was parsed as 'forceReboot'
-            To programmatically force reboot, set <see cref="P:PanelSW.Installer.JetBA.ViewModel.ApplyViewModel.RebootState"/> to <see cref="F:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.ApplyRestart.RestartInitiated"/> and e.Result to <see cref="F:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Result.Restart"/>.
+            To programmatically force reboot, set <see cref="P:PanelSW.Installer.JetBA.ViewModel.ApplyViewModel.RebootState"/> to <see cref="F:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.ApplyRestart.RestartInitiated"/> and args.Result to <see cref="F:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Result.Restart"/>.
             In the case that inheritors or event listeners set the Result to any value other than <see cref="F:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Result.None"/>, that result takes precedence.
             </summary>
-            <param name="e"></param>
+            <param name="args"></param>
         </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.OnApplyComplete(Microsoft.Tools.WindowsInstallerXml.Bootstrapper.ApplyCompleteEventArgs)">
             <summary>
@@ -2236,31 +2251,32 @@
             Set <see cref="P:PanelSW.Installer.JetBA.ViewModel.ApplyViewModel.RebootState"/>.
             Initiate reboot on force reboot state
             </summary>
-            <param name="e"></param>
+            <param name="args"></param>
         </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.OnShutdown(Microsoft.Tools.WindowsInstallerXml.Bootstrapper.ShutdownEventArgs)">
             <summary>
             Called by the engine to uninitialize the user experience.
             Invoke reboot if <see cref="P:PanelSW.Installer.JetBA.ViewModel.ApplyViewModel.RebootState"/> is <see cref="F:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.ApplyRestart.RestartInitiated"/> and command did not disable reboots.
             </summary>
-            <param name="e"></param>
+            <param name="args"></param>
         </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.OnResolveSource(Microsoft.Tools.WindowsInstallerXml.Bootstrapper.ResolveSourceEventArgs)">
             <summary>
             Called by the engine to allow the user experience to change the source using <see cref="M:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Engine.SetLocalSource(System.String,System.String,System.String)"/> or <see cref="M:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Engine.SetDownloadSource(System.String,System.String,System.String,System.String,System.String)"/>.
+            When an embedded container can't be found, try to use WixBundleOriginalSource instead.
             Download file if it is not locally available.
             If <see cref="P:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.ResolveSourceEventArgs.DownloadSource"/> contains both '[' and ']', 
             use <see cref="M:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Engine.FormatString(System.String)"/> and set by <see cref="M:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Engine.SetDownloadSource(System.String,System.String,System.String,System.String,System.String)"/>.
             This allows using burn variables in DownloadUrl, like 'http://www.mysite.com/Files/[WixBundleVersion]/{2}'
             </summary>
-            <param name="e"></param>
+            <param name="args"></param>
         </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.OnError(Microsoft.Tools.WindowsInstallerXml.Bootstrapper.ErrorEventArgs)">
             <summary>
             Called when the engine has encountered an error.
             Prompt error. Save error message to <see cref="P:PanelSW.Installer.JetBA.ViewModel.ApplyViewModel.ErrorMessage"/>
             </summary>
-            <param name="e"></param>
+            <param name="args"></param>
         </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.OnDetectMsiFeature(Microsoft.Tools.WindowsInstallerXml.Bootstrapper.DetectMsiFeatureEventArgs)">
             <summary>

@@ -20,6 +20,11 @@
           <xs:documentation><![CDATA[Path to Jet license.]]></xs:documentation>
         </xs:annotation>
       </xs:attribute>
+      <xs:attribute name="EnumerateVariables" use="optional" type="wix:YesNoType" default="no">
+        <xs:annotation>
+          <xs:documentation><![CDATA['yes' to add a collection of all variables in the project to BootstrapperApplicationData. Only possible if compilation processes all project's source files at once, such as when building using Visual Studio projects.]]></xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
 
