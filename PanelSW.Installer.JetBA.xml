@@ -435,6 +435,7 @@
             <item><see cref="T:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Command"/></item>
             <item><see cref="T:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Display"/><description>Constatnt bound to BootstrapperApplication.Command.Display</description></item>
             <item><see cref="T:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Restart"/><description>Constatnt bound to BootstrapperApplication.Command.Restart</description></item>
+            <item><see cref="T:System.Windows.Threading.Dispatcher"/><description>Constant bound to UI thread's dispatcher</description></item>
             <item><see cref="T:PanelSW.Installer.JetBA.Manifest.BootstrapperApplicationData"/></item>
             <item><see cref="T:PanelSW.Installer.JetBA.Localization.Resources"/>.</item>
             <item><see cref="T:PanelSW.Installer.JetBA.ViewModel.ApplyViewModel"/>.</item>
@@ -535,6 +536,11 @@
         <member name="P:PanelSW.Installer.JetBA.Properties.Resources.Information">
             <summary>
               Looks up a localized string similar to Information.
+            </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Properties.Resources.InstallationIsRunningFormat">
+            <summary>
+              Looks up a localized string similar to {0} installation is running.
             </summary>
         </member>
         <member name="P:PanelSW.Installer.JetBA.Properties.Resources.No">
@@ -882,22 +888,20 @@
             Represents an input validation failure with optional level and caption
             </summary>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.Util.InputValidationException.#ctor(System.String,System.String,PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel,System.Boolean)">
+        <member name="M:PanelSW.Installer.JetBA.Util.InputValidationException.#ctor(System.String,System.String,PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel)">
             <summary>
             C'tor
             </summary>
             <param name="message">Message text</param>
             <param name="caption">Message caption</param>
             <param name="level">Message level</param>
-            <param name="promptExitContinue">Prompt the user to exit or continue. By default, only "OK" is available. Ignored if <see cref="P:PanelSW.Installer.JetBA.Util.InputValidationException.Level"/> is <see cref="F:PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel.Error"/></param>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.Util.InputValidationException.#ctor(System.String,PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel,System.Boolean)">
+        <member name="M:PanelSW.Installer.JetBA.Util.InputValidationException.#ctor(System.String,PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel)">
             <summary>
             C'tor
             </summary>
             <param name="message"></param>
             <param name="level"></param>
-            <param name="promptExitContinue">Prompt the user to exit or continue. By default, only "OK" is available. Ignored if <see cref="P:PanelSW.Installer.JetBA.Util.InputValidationException.Level"/> is <see cref="F:PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel.Error"/> and in non-full UI modes</param>
         </member>
         <member name="P:PanelSW.Installer.JetBA.Util.InputValidationException.Level">
             <summary>
@@ -927,11 +931,6 @@
         <member name="F:PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel.Error">
             <summary>
             Validation failure- installation will fail in silent mode; Page will not transit if full UI mode.
-            </summary>
-        </member>
-        <member name="P:PanelSW.Installer.JetBA.Util.InputValidationException.PromptExitContinue">
-            <summary>
-            Prompt the user to exit or continue. By default, only "OK" is available. Ignored if <see cref="P:PanelSW.Installer.JetBA.Util.InputValidationException.Level"/> is <see cref="F:PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel.Error"/> and in non-full UI modes.
             </summary>
         </member>
         <member name="T:PanelSW.Installer.JetBA.Util.InverseBooleanConverter">
@@ -1100,7 +1099,7 @@
         </member>
         <member name="P:PanelSW.Installer.JetBA.Localization.Resources.Cancel">
             <summary>
-            Cancel?
+            Cancel
             </summary>
         </member>
         <member name="P:PanelSW.Installer.JetBA.Localization.Resources.CancelPrompt">
@@ -1184,6 +1183,14 @@
             <summary>
             Previous Version
             </summary>
+        </member>
+        <member name="P:PanelSW.Installer.JetBA.Localization.Resources.InstallationIsRunningFormat">
+            <summary>
+            {0} installation is running	
+            </summary>
+            <remarks>
+            Message displayed when system shutdown is initiated while installation is in mid-run
+            </remarks>
         </member>
         <member name="P:PanelSW.Installer.JetBA.Localization.Resources.ErrorIcon">
             <summary>
@@ -1276,7 +1283,7 @@
             Status is <see cref="F:System.Threading.Tasks.TaskStatus.WaitingForChildrenToComplete"/> during prompts related to page validation.
             </summary>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.ViewModel.NavigationViewModel.ValidatePage">
+        <member name="M:PanelSW.Installer.JetBA.ViewModel.NavigationViewModel.ValidatePage(System.Windows.Input.ICommand,System.Windows.Input.ICommand)">
             <summary>
             Validate current page inputs. Logs and prompts on validation exceptions.
             Use <see cref="T:PanelSW.Installer.JetBA.Util.InputValidationException"/> for maximal flexibility in message look and behaviour.
@@ -1367,24 +1374,6 @@
             Validation failure message.
             </exception>
         </member>
-        <member name="M:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.ClearResults">
-            <summary>
-            Clear accumulated validation errors
-            </summary>
-        </member>
-        <member name="M:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.AddResult(System.Exception)">
-            <summary>
-            Add an exception to the result list
-            </summary>
-            <param name="ex"></param>
-        </member>
-        <member name="M:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.PromptResults(System.Boolean)">
-            <summary>
-            Prompt validation results and clears them.
-            </summary>
-            <param name="doExit">True to abort after the first prompt</param>
-            <returns>true if no errors were detected. That is, if no exceptions were collected, or if only <see cref="T:PanelSW.Installer.JetBA.Util.InputValidationException"/> instances with warning or info level were.</returns>
-        </member>
         <member name="P:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.IgnoreErrors">
             <summary>
             True to ignore validation errors.
@@ -1392,14 +1381,30 @@
             Used mainly for debug purposes.
             </summary>
         </member>
+        <member name="M:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.AddResult(System.Exception)">
+            <summary>
+            Add an exception to the result list.
+            <see cref="T:System.AggregateException"/> are expanded to their internal list
+            Exceptions with no text are ignored
+            </summary>
+            <param name="ex"></param>
+        </member>
         <member name="M:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.PromptResults(System.Windows.Input.ICommand,System.Windows.Input.ICommand)">
             <summary>
-            Prompt validation results and clears them.
+            Prompt validation results.
             Executes an error or success command. The command will be executed only once even if multiple results were collected.
             </summary>
-            <param name="successCommand">Command to execute if no error was encountered</param>
+            <param name="successCommand">Command to execute if no error was encountered or if all results were ignored, meaning all were <see cref="T:PanelSW.Installer.JetBA.Util.InputValidationException"/> with <see cref="P:PanelSW.Installer.JetBA.Util.InputValidationException.Level"/> not equal <see cref="F:PanelSW.Installer.JetBA.Util.InputValidationException.ErrorLevel.Error"/></param>
             <param name="errorCommand">Command to execute if any error was encountered</param>
-            <returns></returns>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.PromptResultsSync">
+            <summary>
+            Prompt validation results and clears them.
+            </summary>
+            <returns>
+            <see cref="F:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Result.Ok"/> if no errors occured, or if <see cref="P:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.IgnoreErrors"/> is true.
+            <see cref="F:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Result.Cancel"/> if any error occured and <see cref="P:PanelSW.Installer.JetBA.ViewModel.InputValidationsViewModel.IgnoreErrors"/> is false.
+            </returns>
         </member>
         <member name="T:PanelSW.Installer.JetBA.ViewModel.UtilViewModel">
             <summary>
@@ -2142,16 +2147,6 @@
             Initialize <see cref="T:Ninject.StandardKernel"/> and call <see cref="M:Ninject.KernelBase.Inject(System.Object,Ninject.Parameters.IParameter[])"/>
             </summary>
         </member>
-        <member name="P:PanelSW.Installer.JetBA.JetBootstrapperApplication.Dispatcher">
-            <summary>
-            Get the user interface dispatcher
-            </summary>
-        </member>
-        <member name="P:PanelSW.Installer.JetBA.JetBootstrapperApplication.View">
-            <summary>
-            Gets the BA Window. By default, only initialized if <see cref="P:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Command.Display"/> is equal to or greater than <see cref="F:Microsoft.Tools.WindowsInstallerXml.Bootstrapper.Display.Passive"/>
-            </summary>
-        </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.PlanLayout">
             <summary>
             Plan layout operation
@@ -2172,6 +2167,11 @@
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.Run">
             <summary>
             Entry point that is called when the bootstrapper application is ready to run.
+            </summary>
+        </member>
+        <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.InvokeShutdown">
+            <summary>
+            Initiate dispatcher shutdown which eventually shuts down the installation.
             </summary>
         </member>
         <member name="M:PanelSW.Installer.JetBA.JetBootstrapperApplication.OnDetectBegin(Microsoft.Tools.WindowsInstallerXml.Bootstrapper.DetectBeginEventArgs)">
