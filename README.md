@@ -1,7 +1,47 @@
-JetBA WiX extension features:
 - JetBA: The most comprehensive, fully customizable, extensible, WPF-based BootstrapperApplication.
 - JetBA++: The only native fully customizable, extensible, Qt-based BootstrapperApplication.
-- Preprocessor extension:
+
+# JetBA WiX extension features:
+
+- Detect bundles and get their versions in a variable:
+    ~~~~~~~
+    <jet:BundleSearch UpgradeCode="{1D1DB5E6-E0D8-3103-8570-369A82A9BF33}" VersionVariable="DetectedVC2013x86Version" NamePattern="\bx86\b"/>
+    ~~~~~~~
+- RebootBoundary attrbiute on bundle packages: force reboot after the package if any preceding package required reboot
+- Embed a set of values in a MSI or PE (exe, dll) files without invalidating the digital signature
+    ~~~~~~~
+	<File>
+		<jet:EmbedParameters>
+			<jet:Parameter Name="key" Value="[VALUE]"/>
+		</jet:EmbedParameters>
+	</File>
+    ~~~~~~~
+- Embed parameters in a bootstrapper using a MSBuild task:
+    ~~~~~~~
+	<ItemGroup>
+		<EmbedParamenetrs_Parameters Include='key1=value1'/>
+		<EmbedParamenetrs_Parameters Include='key2='/>
+		<EmbedParamenetrs_Parameters Include='key3=val3'/>
+	</ItemGroup>
+	<PropertyGroup>
+		<EmbedParamenetrs_BootstrapperIn>$(SolutionDir)build\bin\$(Configuration)\SampleBootstrapper\JetBA_Setup.exe</EmbedParamenetrs_BootstrapperIn>
+		<EmbedParamenetrs_BootstrapperOut>$(EmbedParamenetrs_BootstrapperIn).1.exe</EmbedParamenetrs_BootstrapperOut>
+	</PropertyGroup>
+	<Target Name="SignBundle">
+		<Exec Command='$(SignCommandBase) /v /d "%(SignBundle.Filename)" "%(SignBundle.FullPath)"' />
+		<CallTarget Targets='EmbedBootstrapperParameters'/>    
+	</Target>
+    ~~~~~~~
+- Extract embedded parameters in a bootstrapper
+    ~~~~~~~
+    <jet:JetBaSettings ExtractParameters="yes"/>
+    ~~~~~~~
+- Extract embedded parameters in MSI
+    ~~~~~~~
+    <jet:ExtractParameters/>
+    ~~~~~~~
+
+# Preprocessor extension:
   - Harvest directly from WiX source code by executing Heat commands. The command is passes to heat.exe with the following changes:
     - Added support to use DuplicateFile where possible:
       - -cp NameSizeHash: Files with the same name, size, and MD5 hash are duplicated
@@ -61,8 +101,3 @@ JetBA WiX extension features:
       <?endforeach?>
   	</ComponentGroup>
     ~~~~~~~
-- Detect bundles and get their versions in a variable:
-    ~~~~~~~
-    <jet:BundleSearch UpgradeCode="{1D1DB5E6-E0D8-3103-8570-369A82A9BF33}" VersionVariable="DetectedVC2013x86Version" NamePattern="\bx86\b"/>
-    ~~~~~~~
-- RebootBoundary attrbiute on bundle packages: force reboot after the package if any preceding package required reboot

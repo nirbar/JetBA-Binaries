@@ -1,3 +1,7 @@
+# v5.2.0
+
+Support embedding and extracting parameters in signed MSI and binaries
+
 # v5.0.0
 
 - heat.dir \[-cp None|NameVersion|NameSizeHash\]
